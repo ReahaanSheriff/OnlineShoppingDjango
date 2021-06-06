@@ -1,0 +1,80 @@
+{% load static %}
+<!doctype html>
+<html lang="en">
+  <head>
+    <!-- css link -->
+  <link rel="stylesheet" type="text/css" href="{% static 'css/home.css' %}">
+     
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+
+    <!-- Fontawesome CDN -->
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.0/css/all.css" integrity="sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ" crossorigin="anonymous">
+    
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+
+    <title>Infinity Mobiles</title>
+  </head>
+  <body>
+  
+<header class="sticky-top">
+<div class="container">
+  <nav id="mainnabar" class="navbar navbar-expand-lg navbar-light bg-light ">
+  <a class="navbar-brand" href="#"><h1>Sublime.</h1></a>
+  
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+    <div class="navbar-nav nav-fill w-75">
+      <a class="nav-item nav-link" href="{% url 'home' %}">Home</a>
+      <a class="nav-item nav-link" href="{% url 'mobile' %}">Mobiles</a>
+      <a class="nav-item nav-link" href="{% url 'accessory' %}">Accessories</a>
+      <a class="nav-item nav-link" href="{% url 'home' %}#offers">Offers</a>
+      <a class="nav-item nav-link" href="{% url 'contact' %}">Contact</a>
+      
+        {% if user.is_authenticated %}
+        <li class="nav-item nav-link">Hello, {{user.username}}</li>
+
+       <li><a class="nav-item nav-link"  href="{% url 'logout' %}">Logout</a></li>
+       
+       {% else %}
+      <a class="nav-item nav-link" href="{% url 'login' %}">Login</a>
+      <a class="nav-item nav-link" href="{% url 'register' %}">Register</a>
+      {% endif %}
+    </div>
+    <a href="{% url 'cart' %}" class="d-none d-lg-block cart"><i class="fa fa-shopping-cart" aria-hidden="true"></i> Cart<span> ({{count}})</span></a>
+  </div>
+</nav>
+</div>
+</header>
+
+      {% block content %}
+
+            {% endblock %}
+            <!-- Footer -->
+            
+  <footer class="footer mt-5">
+   <div class="footer_background" style="background-image:url({% static 'images/footer.jpg' %});">
+   <div class="container">
+   <div class="footer_content ">
+    <center>
+      <div class="footer_logo"><a href="#" style="color:black;text-decoration: none;">Sublime.</a></div>
+      <div class="footer_body">Project done by Reahaan Sheriff</div>
+      <div class="icons" style="text-align: end;">
+      <a href=""><i class="fab fa-instagram pr-3"></i></a>
+      <a href=""><i class="fab fa-twitter pr-3"></i></a>
+      <a href=""><i class="fab fa-facebook"></i></a>
+      </div> 
+      </center>  
+      </div>
+        </div>
+      </div>
+  </footer>
+
+			</body>
+			</html>

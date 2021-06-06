@@ -1,0 +1,113 @@
+{% extends 'header.html' %}
+{% load static %}
+{% block content %}
+{% static 'images' as baseUrl %}
+<!-- bread crumb-->
+    <div class="container">
+      <div class="breadcrumb_background" style="background-image:url({% static 'images/cart.jpg' %})">
+             <div class="d-flex flex-column align-items-start" style="padding:130px 50px;">
+               <ol class="breadcrumb" style="background: none;">
+                 <li class="breadcrumb-item">
+                   <a href="{% url 'mobile' %}">Mobiles</a>
+                 </li>
+                 <li class="breadcrumb-item">
+                   <a href="{% url 'accessory' %}">Accessories</a>
+                 </li>
+                 <li class="breadcrumb-item active" style="color:rgb(200, 100, 120);" aria-current="page">Shopping Cart</li>
+               </ol>
+             </div>
+           </div>
+      </div>
+      {% if prod %}
+<div id="final">
+  
+      <table>
+        <thead>
+          <th>
+            <th>Product</th>
+            <th>Price</th>
+            <th>Quantity</th>
+            <th>Total</th>
+            <th></th>
+          </th>
+        </thead>
+<tbody>
+  {% for i in prod %}
+  <tr>
+    <td><img src="{{i.img1.url}}" class="img-fluid" ></td>
+    <td><label><span>{{i.name}}</span></label></td>
+    <td><span>{{i.price}}</span></td>
+    
+    <td>
+      
+       <a class="btn btn-success" onclick="qtyChange('{{i.id}}', 'plus','{{i.price}}' )">+</a>
+       <span id="prod_qty{{i.id}}">{{i.quantity}}</span>
+       <a class="btn btn-warning" onclick="qtyChange('{{i.id}}', 'minus', '{{i.price}}')">-</a>
+     </td>
+   
+    <td><span id="prod_total{{i.id}}" class="tot">{{i.total}}</span></td>
+    <td><a class="btn btn-danger" href="{% url 'clearProd' i.prod_id i.type %}" id="rm">Remove</a></td>
+  </tr>
+  {% endfor %}
+</tbody>
+      </table><br><br>
+      <div class="total">
+        <center><h3>Grand Total</h3>Rs <span id="alltotal">{{grandTotal}}</span> /-</center>
+      </div></br></br>
+    </div>
+      
+      {% else %}
+
+          <h1 class="text-center">Cart is Empty</h1>
+        
+{% endif %}
+      <div class="container">
+      
+      <div class="row clearcart" >
+        <a href="{% url 'clearcart' %}" style="margin-left: 350px;margin-right: 100px;">Clear Cart</a>
+        <a href="{% url 'checkout' %}">Check Out</a>
+      
+      </div>
+
+    </div>
+    <script>
+    
+
+      function qtyChange(id, type, price){
+         const replay = new XMLHttpRequest();
+
+            replay.onload = function() {
+                let responseValue = null;
+
+                try {
+                    responseValue = JSON.parse(replay.responseText);
+                } catch (e) {
+                    console.log("Could not parse json");
+                }
+                if (responseValue) {
+                    document.getElementById('prod_qty'+id).innerHTML=responseValue.qty;
+                    document.getElementById('prod_total'+id).innerHTML=responseValue.total;
+
+                }
+            };
+            let body = new FormData();
+            body.append('id', JSON.stringify(id));
+            body.append('type', JSON.stringify(type));
+            body.append('price', JSON.stringify(price));
+
+            replay.open("POST", "{% url 'qtyChange' %}");
+            replay.setRequestHeader("X-CSRFToken", "{{ csrf_token }}");
+            replay.send(body);
+        
+      }
+     
+    </script>
+
+
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+
+{% endblock %}

@@ -1,0 +1,136 @@
+
+  {% extends 'header.html' %}
+  {% load static %}
+  {% block content %}
+  {% static 'images' as baseUrl %}
+<!-- bread crumb-->
+    <div class="container">
+      <div class="breadcrumb_background" style="background-image:url({% static 'images/cart.jpg' %})">
+             <div class="d-flex flex-column align-items-start" style="padding:130px 50px;">
+               <ol class="breadcrumb" style="background: none;">
+                 <li class="breadcrumb-item">
+                   <a href="{% url 'cart' %}">Shopping Cart</a>
+                 </li>
+                 <li class="breadcrumb-item active" style="color:rgb(200, 100, 120);" aria-current="page">Check Out</li>
+               </ol>
+             </div>
+           </div>
+      </div>
+
+<!--Billing address-->
+
+ <div class="billing">
+        <div class="container">
+        	<div class="row">
+        	<div class="col-lg-6">
+        	<h1>Billing Address</h1>
+            <div class="row">
+                <div class="col-md-6 form-group">
+                    <label for="fname">First Name</label>
+                    <input type="text" id="fname" class="form-control form-control-lg" required>
+                </div>
+                <div class="col-md-6 form-group">
+                    <label for="lname">Last Name</label>
+                    <input type="text" id="lname" class="form-control form-control-lg" required>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-6 form-group">
+                    <label for="eaddress">Email Address</label>
+                    <input type="text" id="eaddress" class="form-control form-control-lg" required>
+                </div>
+                <div class="col-md-6 form-group">
+                    <label for="tel">Tel. Number</label>
+                    <input type="text" id="tel" class="form-control form-control-lg" required>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-6 form-group">
+                    <label for="door">Door No</label>
+                    <input type="text" id="door" class="form-control form-control-lg" required>
+                </div>
+                <div class="col-md-6 form-group">
+                    <label for="st">Street Name</label>
+                    <input type="text" id="st" class="form-control form-control-lg" required>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-6 form-group">
+                    <label for="area">Area</label>
+                    <input type="text" id="area" class="form-control form-control-lg" required>
+                </div>
+                <div class="col-md-6 form-group">
+                    <label for="city">City</label>
+                    <input type="text" id="tel" class="form-control form-control-lg" required>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-6 form-group">
+                    <label for="zip">Zip Code</label>
+                    <input type="text" id="zip" class="form-control form-control-lg" required>
+                </div>
+                <div class="col-md-6 form-group">
+                    <label for="con">Country</label>
+                    <input type="text" id="con" class="form-control form-control-lg" required>
+                </div>
+            </div>
+            
+        </div>
+        {% if prod %}
+        <div class="col-lg-6 final">
+        	<table>
+        		<h1 class="text-center">Your Order</h1>
+        		
+                <tbody>
+
+                {% for i in prod %}
+        			<tr>
+        				<td><span>{{i.name}}</span>&nbsp;&nbsp;<span>[{{i.quantity}}]</span></td>
+        				<td><span>Rs.{{i.total}}</span></td>
+                  
+        			</tr>
+                {% endfor %}
+        			<tr>
+        				<td>Tax</td>
+        				<td><span>18%</span></td>
+        			</tr>
+        			<tr>
+        				<td>Shipping</td>
+        				<td>Free</td>
+        			</tr>
+                    <tr>
+                        <td>Total</td>
+                        <td><span>Rs.{{grandTotal}}</span></td>
+                    </tr>
+        		</tbody>
+                
+        	</table>
+               <div class="payment_options" style="padding: 30px 100px;">
+               	<input type="radio" name="radio">
+					<label class="payment_option clearfix">Cach on delivery</label>
+				</div>
+        </div>
+        {% else %}
+        <div class="col-lg-6 final">
+            <h1 class="text-center">No orders</h1>
+        </div>
+   {% endif %}
+    </div>
+    <div id="placeorder" class="form-group">
+    <a href="#" class="btn btn-info">Place Order</a>
+</div>
+    </div>
+</div>
+
+
+
+
+  
+
+
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+    {% endblock %}

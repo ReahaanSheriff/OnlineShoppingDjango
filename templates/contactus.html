@@ -1,0 +1,93 @@
+{% extends 'header.html' %}
+{% load static %}
+{% block content %}
+{% static 'images' as baseUrl %}
+<div class="container">
+<div class="back" style="background-image: url({% static 'images/bg_1.jpg' %});">
+    <div class="c" style="color: white; font-weight: 500;">
+      <h2 class="mt-4 ml-5 pt-5">Contact</h2>
+        <p class="ml-5 mb-0 pb-0" style="color: white">Lorem ipsum dolor sit amet consectetur adipisicing.</p>
+          </div>
+    </div>
+      
+          </div>
+
+
+    <div class="site-section">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-6 form-group">
+                    <label for="fname">First Name</label>
+                    <input type="text" id="fname"  class="form-control form-control-lg">
+                </div>
+                <div class="col-md-6 form-group">
+                    <label for="lname">Last Name</label>
+                    <input type="text" id="lname"  class="form-control form-control-lg">
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-6 form-group">
+                    <label for="eaddress">Email Address</label>
+                    <input type="text" id="eaddress"  class="form-control form-control-lg">
+                </div>
+                <div class="col-md-6 form-group">
+                    <label for="tel">Tel. Number</label>
+                    <input type="text" id="tel"  class="form-control form-control-lg">
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-12 form-group">
+                    <label for="message">Message</label>
+                    <textarea name="" id="message" placeholder="Enter your message......" cols="30" rows="10" class="form-control"></textarea>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-12">
+                    <input type="submit" value="Send Message" class="btn btn-success btn-lg px-5 mb-5">
+                </div>
+            </div>
+
+        <!-- Contact Info -->
+            <div class="row">
+              <div class="col-lg-4">
+                <div class="contact_info_section">
+              <div class="contact_info_title">Marketing</div>
+              <ul>
+                <li>Phone: <span>+53 345 7953 3245</span></li>
+                <li>Email: <span>yourmail@gmail.com</span></li>
+              </ul>
+            </div>
+              </div>
+              <div class="col-lg-4">
+                <div class="contact_info_section">
+              <div class="contact_info_title">Shipping & Returns</div>
+              <ul>
+                <li>Phone: <span>+53 345 7953 3245</span></li>
+                <li>Email: <span>yourmail@gmail.com</span></li>
+              </ul>
+            </div>
+              </div>
+              <div class="col-lg-4">
+                <div class="contact_info_section">
+              <div class="contact_info_title">Information</div>
+              <ul>
+                <li>Phone: <span>+53 345 7953 3245</span></li>
+                <li>Email: <span>yourmail@gmail.com</span></li>
+              </ul>
+            </div>
+              </div>
+            </div>
+        </div>
+    </div>
+
+     
+  
+
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+    <!-- Javascript link -->
+{% endblock %}

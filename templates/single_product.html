@@ -1,0 +1,180 @@
+{% extends 'header.html' %}
+{% load static %}
+{% block content %}
+{% static 'images' as baseUrl %}
+ 
+    <div class="container">
+      <div class="accessories_background" style="background-image:url({% static 'images/avds_xl.jpg' %})">
+      <div class="accessories_content text-start">
+                <div class="accessories_title">Amazing Mobiles and Accessories!!</div>
+                <div class="accessories_body"><p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam a ultricies metus. Sed nec molestie eros. Sed viverra velit venenatis fermentum luctus.</p></div>
+              </div>
+            </div>
+      </div>
+
+<!-- Product Details --> 
+<div class="container">
+  <div class="row">
+    <div class="col-lg-6">
+      <div class="large" ><img src="{{single.img1.url}}" alt="image" class="main img-fluid"></div>
+      <div class=" d-flex flex-row align-items-start justify-content-between" id="vsmall">
+       <div class="tiny active" > <img src="{{single.img1.url}}" alt="image" class="small img-fluid"></div>
+        <div class="tiny" ><img src="{{single.img2.url}}" alt="image" class="small img-fluid"></div>
+        <div class="tiny"  ><img src="{{single.img3.url}}" alt="image" class="small img-fluid"></div>
+        <div class="tiny" ><img src="{{single.img4.url}}" alt="image" class="small img-fluid"></div>
+      </div>
+    </div>
+    
+    <div class="col-lg-6">
+      <div class="prod_desc final">
+        
+      <table>
+        <thead></thead>
+        <tbody>
+          <tr>
+            <td>name</td>
+            <td>{{single.name}}</td>
+          </tr>
+           <tr>
+            <td>Price</td>
+            <td>Rs.{{single.price}}</td>
+          </tr>
+          {% if type == 'mob' %}
+          <tr>
+            <td>ram</td>
+            <td>{{single.ram}}</td>
+          </tr>
+          <tr>
+            <td>rom</td>
+            <td>{{single.rom}}</td>
+          </tr>
+          <tr>
+            <td>Battery</td>
+            <td>{{single.battery}}</td>
+          </tr>
+          <tr>
+            <td>procesor</td>
+            <td>{{single.processor}}</td>
+          </tr>
+          <tr>
+            <td>os</td>
+            <td>{{single.os}}</td>
+          </tr>
+          <tr>
+            <td>Front camera</td>
+            <td>{{single.f_camera}}</td>
+          </tr>
+          <tr>
+            <td>Rear camera</td>
+            <td>{{single.r_camera}}</td>
+          </tr>
+          {% endif %}
+        </tbody>
+      </table>
+    </div>
+
+  </div>
+  </div>
+     </br></br><center class="clearcart"><a href="{% url 'addcart' single.id type %}" id="ad">Add to Cart</a></center></br></br>
+</div>
+
+<div class="icons">
+<div class="container">
+        <div class="row">
+     
+          <div class="col-lg-4">
+            <center>
+            <div class="icon">
+              
+              <img src="{% static 'images/symbol.png' %}" height="75px" width="75px">
+              <div class="parahead">Free Shipping Worldwide</div>
+              <div class="paragraph">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod</div>
+            
+            </div>
+          </center>
+          </div>
+          <div class="col-lg-4">
+            <center>
+            <div class="icon">
+              <img src="{% static 'images/exchange.png' %}" height="75px" width="75px">
+              <div class="parahead">Free Returns</div>
+              <div class="paragraph">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod</div>
+        
+            </div>
+          </center>
+          </div>
+          <div class="col-lg-4">
+            <center>
+            <div class="icon">
+              <img src="{% static 'images/support.png' %}" height="75px" width="75px">
+              <div class="parahead">24h Fast Support</div>
+              <div class="paragraph">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod </div>
+          
+            </div>
+          </center>
+          </div>
+ 
+        </div>
+    </div>
+</div>
+<!-- Horizontal Line -->
+
+    <div class="container">
+          <div class="hr" style="border:2px solid #e3e3e3;"></div>
+      </div>
+<!-- FeedBack -->      
+      <div class="container">
+      <div class="row">
+        <div class="col-lg-8 offset-lg-2">
+          <div class="feedcontent text-center">
+            <div class="feedtitle">Leave your Feedback here</div>
+            <div class="feedtext"><p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam a ultricies metus. Sed nec molestie eros</p></div>
+            <div class="feedcontainer">
+              <form action="#">
+                <input type="text" class="feedinput" required="required">
+                <button class="feedbutton mb-5">Submit</button>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+
+
+
+
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+    <!-- Isotope link -->
+    <script src="{% static 'https://unpkg.com/isotope-layout@3/dist/isotope.pkgd.js' %}"></script>
+    <script src="{% static 'isotope/isotope.pkgd.min.js' %}"></script>
+    <!--jQuery link-->
+    <script type="text/javascript" src="{% static 'lib/jquery-3.5.1.min.js' %}"></script>
+    <!-- Javascript link -->
+    <script type="text/javascript" src="{% static 'js/single_product.js' %}"></script>
+
+ {% endblock %}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

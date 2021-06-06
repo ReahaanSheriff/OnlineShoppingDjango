@@ -1,0 +1,121 @@
+{% extends 'header.html' %}
+{% load static %}
+
+{% block content %}
+{% static 'images' as baseUrl %}
+
+  
+    <div class="container">
+      <div class="accessories_background" style="background-image:url({%static 'images/avds_xl.jpg' %})">
+      <div class="accessories_content text-start">
+                <div class="accessories_title">Accessories</div>
+                <div class="accessories_body"><p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam a ultricies metus. Sed nec molestie eros. Sed viverra velit venenatis fermentum luctus.</p></div>
+              </div>
+            </div>
+      </div>
+  <!--products-->
+<div id="accessories" class="container">
+       <div class="filter">
+            <button data-name='*' class="active">All</button>
+            <button data-name=".headphone" >Head Phone</button>
+            <button data-name=".charger" >Charger</button>
+            <button data-name=".powerbank" >Power Bank</button>
+            <button data-name=".otg" >OTG</button>
+       </div>
+      
+      <div class="grid">
+        {% for accessory in accs %}
+      {% if not accessory.offer %}
+        <div class="grid-item {{accessory.category}} col-lg-3 col-sm-6">
+            <a href="{% url 'desc' accessory.name %}"><img src="{{accessory.img1.url}}" alt="Image" class="img-fluid" ></a></br>
+            <a href="{% url 'desc' accessory.name %}" class="product" >{{accessory.name}}</a></br>
+            <label class="price">Rs. {{accessory.price}} /-</label>
+        </div>
+        {% endif %}
+   {% endfor %}
+     
+</div>
+</div>
+
+{% for message in messages %}
+<script>alert('{{message}}');</script>
+{% endfor %}
+
+
+
+<div class="container">
+        <div class="row">
+     
+          <div class="col-lg-4">
+            <center>
+            <div class="icon">
+              
+              <img src="{% static 'images/symbol.png' %}" height="75px" width="75px">
+              <div class="parahead">Free Shipping Worldwide</div>
+              <div class="paragraph">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod</div>
+            
+            </div>
+          </center>
+          </div>
+          <div class="col-lg-4">
+            <center>
+            <div class="icon">
+              <img src="{% static 'images/exchange.png' %}" height="75px" width="75px">
+              <div class="parahead">Free Returns</div>
+              <div class="paragraph">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod</div>
+        
+            </div>
+          </center>
+          </div>
+          <div class="col-lg-4">
+            <center>
+            <div class="icon">
+              <img src="{% static 'images/support.png' %}" height="75px" width="75px">
+              <div class="parahead">24h Fast Support</div>
+              <div class="paragraph">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod </div>
+          
+            </div>
+          </center>
+          </div>
+ 
+        </div>
+    </div>
+
+<!-- Horizontal Line -->
+
+    <div class="container">
+          <div class="hr" style="border:2px solid #e3e3e3;"></div>
+      </div>
+<!-- FeedBack -->      
+      <div class="container">
+      <div class="row">
+        <div class="col-lg-8 offset-lg-2">
+          <div class="feedcontent text-center">
+            <div class="feedtitle">Leave your Feedback here</div>
+            <div class="feedtext"><p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam a ultricies metus. Sed nec molestie eros</p></div>
+            <div class="feedcontainer">
+              <form action="#">
+                <input type="text" class="feedinput" required="required">
+                <button class="feedbutton mb-5">Submit</button>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+
+
+
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+    <!-- Isotope link -->
+    <script src="https://unpkg.com/isotope-layout@3/dist/isotope.pkgd.js"></script>
+    <script src="{% static 'isotope/isotope.pkgd.min.js' %}"></script>
+    <!-- Javascript link -->
+    <script type="text/javascript" src="{% static 'js/mobiles_accessories.js' %}"></script>
+    {% endblock %}
+ 
