@@ -22,7 +22,7 @@ def register(request):
                 return render(request,'register.html')
             else:
                 user=User.objects.create_user(username=username,password=password1,email=email,first_name=first_name,last_name=last_name)
-                user.save();
+                user.save()
                 print ('user created')
         else:
             messages.info(request,'password not matching')
@@ -30,7 +30,7 @@ def register(request):
         return render(request,'login.html')
 
     else:
-        return render(request,'register.html');
+        return render(request,'register.html')
 
 
 def login(request):
@@ -72,9 +72,9 @@ def forget(request):
                 return render(request,'login.html')
             else:
                 messages.info(request,'user none')
-                return render(request,'forget.html');
+                return render(request,'forget.html')
         else:
             messages.info(request,'password not matching')
-            return render(request,'forget.html');        
+            return render(request,'forget.html')       
     else:
-        return render(request,'forget.html');
+        return render(request,'forget.html')
