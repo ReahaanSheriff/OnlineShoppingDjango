@@ -4,3 +4,4 @@ from .models import *
 
 admin.site.register(mobiles)
 admin.site.register(accessories)
+admin.site.register(product)
